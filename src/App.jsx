@@ -1,10 +1,12 @@
 import { useState } from "react";
+import ConfettiExplosion from "react-confetti-explosion";
 
 const App = () => {
   const initialBoard = Array(9).fill(null);
   const [board, setBoard] = useState(initialBoard);
   const [isXTurn, setIsXTurn] = useState(true);
   const [winner, setWinner] = useState(null);
+  const [isExploding, setIsExploding] = useState(false);
 
   function handleCellClick(index) {
     if (board[index] !== null) return;
@@ -15,6 +17,7 @@ const App = () => {
     const checkIsWinner = checkWinner(boardCopy);
     if (checkIsWinner) {
       setWinner(isXTurn ? "X" : "O");
+      setIsExploding(true);
     } else if (boardCopy.every((cell) => cell !== null)) {
       setWinner("Draw");
     }
@@ -57,7 +60,10 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className="main">
+      <div className="confetti">
+        {winner && <ConfettiExplosion />}
+      </div>
       <div className="board-header">
         <h3 className="board-heading">
           {!winner
@@ -83,7 +89,7 @@ const App = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
