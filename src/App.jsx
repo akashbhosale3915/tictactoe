@@ -66,11 +66,27 @@ const App = () => {
       </div>
       <div className="board-header">
         <h3 className="board-heading">
-          {!winner
-            ? `Player ${isXTurn ? "X" : "O"}'s turn`
-            : winner === "Draw"
-            ? "It's a draw 😑"
-            : `Player ${winner} wins 🎉`}
+          {!winner ? (
+            <>
+              Player{" "}
+              <span
+                className={
+                  isXTurn ? "player-red" : "player-blue"
+                }
+              >
+                {isXTurn ? "X" : "O"}
+              </span>
+              &apos;s turn
+            </>
+          ) : winner === "Draw" ? (
+            <>It&apos;s a draw 😑</>
+          ) : (
+            <>
+              Player{" "}
+              <span className="player">{winner}</span> wins
+              🎉
+            </>
+          )}
         </h3>
         <button onClick={!winner ? resetGame : playAgain}>
           {winner ? "Play Again" : "Reset game"}
@@ -81,9 +97,13 @@ const App = () => {
           <div
             key={index}
             className="cell"
-            // style={{}}
             onClick={() =>
               !winner && handleCellClick(index)
+            }
+            style={
+              cell === "X"
+                ? { color: "#DC143C" }
+                : { color: "#3457D5" }
             }
           >
             {cell}
