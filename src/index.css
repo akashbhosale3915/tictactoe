@@ -77,6 +77,9 @@ body {
 .winning-cell {
   background: #32de84;
 }
+.winning-cell:hover {
+  background: #35d080;
+}
 
 .player-red {
   color: #dc143c;
