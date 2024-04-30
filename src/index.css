@@ -74,6 +74,10 @@ body {
   background: rgba(255, 255, 255, 0.8);
 }
 
+.winning-cell {
+  background: #32de84;
+}
+
 .player-red {
   color: #dc143c;
 }

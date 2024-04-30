@@ -6,9 +6,10 @@ const App = () => {
   const [board, setBoard] = useState(initialBoard);
   const [isXTurn, setIsXTurn] = useState(true);
   const [winner, setWinner] = useState(null);
+  const [winningCells, setWinningCells] = useState([]);
 
   function handleCellClick(index) {
-    if (board[index] !== null) return;
+    if (board[index] !== null || winner) return;
     const boardCopy = [...board];
     boardCopy[index] = isXTurn ? "X" : "O";
     setBoard(boardCopy);
@@ -41,6 +42,7 @@ const App = () => {
         board[a] === board[b] &&
         board[a] === board[c]
       ) {
+        setWinningCells([a, b, c]);
         return true;
       }
     }
@@ -50,6 +52,7 @@ const App = () => {
   function resetGame() {
     setBoard(initialBoard);
     setIsXTurn(true);
+    setWinningCells([]);
   }
 
   function playAgain() {
@@ -96,7 +99,9 @@ const App = () => {
         {board.map((cell, index) => (
           <div
             key={index}
-            className="cell"
+            className={`cell ${
+              winningCells.includes(index) && "winning-cell"
+            }`}
             onClick={() =>
               !winner && handleCellClick(index)
             }
