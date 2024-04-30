@@ -81,6 +81,7 @@ const App = () => {
           <div
             key={index}
             className="cell"
+            // style={{}}
             onClick={() =>
               !winner && handleCellClick(index)
             }
