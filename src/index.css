@@ -76,6 +76,7 @@ body {
 
 .winning-cell {
   background: #32de84;
+  transition: all 0.3s;
 }
 .winning-cell:hover {
   background: #35d080;

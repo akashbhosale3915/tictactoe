@@ -86,8 +86,16 @@ const App = () => {
           ) : (
             <>
               Player{" "}
-              <span className="player">{winner}</span> wins
-              🎉
+              <span
+                className={
+                  winner === "X"
+                    ? "player-red"
+                    : "player-blue"
+                }
+              >
+                {winner}
+              </span>{" "}
+              wins 🎉
             </>
           )}
         </h3>
