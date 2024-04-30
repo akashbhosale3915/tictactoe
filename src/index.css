@@ -71,13 +71,13 @@ body {
 }
 
 .cell:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .player-red {
-  color: red;
+  color: #dc143c;
 }
 
 .player-blue {
-  color: blue;
+  color: #3457d5;
 }
